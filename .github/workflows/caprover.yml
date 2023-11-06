@@ -19,3 +19,4 @@ jobs:
         uses: josedev-union/caprover-compose-action@test
         with:
           server: http://captain.162.253.55.115.nip.io/
+          prefix: ci
