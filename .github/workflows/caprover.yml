@@ -12,7 +12,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout repo
+      - name: Checkout project
+        uses: actions/checkout@v3
+
+      - name: Deploy caprover
         uses: josedev-union/caprover-compose-action@test
         with:
           server: http://captain.162.253.55.115.nip.io/
