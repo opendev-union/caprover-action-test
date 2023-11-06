@@ -1,5 +1,5 @@
 {
-  "path": "/api/v2/user/apps/appDefinitions/enablebasedomainssl",
+  "path": "/user/apps/appDefinitions/enablebasedomainssl",
   "method": "POST",
   "data": {
     "appName": "ci-frontend"
