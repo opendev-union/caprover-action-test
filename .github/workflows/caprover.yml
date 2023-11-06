@@ -1,0 +1,18 @@
+name: Container image
+
+on:
+  push:
+    branches: ["main"]
+    tags:
+       - '**'
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu22.04
+    steps:
+      - name: checkout repo
+        uses: https://github.com/josedev-union/caprover-compose-action
+        with:
+          server: http://captain.162.253.55.115.nip.io/

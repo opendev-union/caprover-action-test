@@ -1,0 +1,7 @@
+{
+  "path": "/api/v2/user/apps/appDefinitions/enablebasedomainssl",
+  "method": "POST",
+  "data": {
+    "appName": "frontend"
+  }
+}

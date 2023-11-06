@@ -1,0 +1,4 @@
+{
+  "schemaVersion": 2,
+  "imageName": "rabbitmq:3.11.9-management-alpine"
+}
