@@ -13,6 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout repo
-        uses: /josedev-union/caprover-compose-action@main
+        uses: josedev-union/caprover-compose-action@main
         with:
           server: http://captain.162.253.55.115.nip.io/
