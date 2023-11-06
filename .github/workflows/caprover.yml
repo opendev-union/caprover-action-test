@@ -13,6 +13,6 @@ jobs:
     runs-on: ubuntu22.04
     steps:
       - name: checkout repo
-        uses: https://github.com/josedev-union/caprover-compose-action
+        uses: /josedev-union/caprover-compose-action@main
         with:
           server: http://captain.162.253.55.115.nip.io/
