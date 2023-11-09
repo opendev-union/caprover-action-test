@@ -1,0 +1,10 @@
+{
+  "path": "/user/apps/appDefinitions/update",
+  "method": "POST",
+  "data": {
+    "appName": "$APP",
+    "envVars":[
+      {"key":"MYSQL_ROOT_PASSWORD","value":"asdf1234"}
+    ]
+  }
+}
