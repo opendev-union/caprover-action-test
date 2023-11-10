@@ -20,4 +20,5 @@ jobs:
         with:
           server: ${{ secrets.CAPTAIN_SERVER_URL }}
           password: ${{ secrets.CAPTAIN_SERVER_PASSWORD }}
-          keep: (github.event_name == 'pull_request' && github.event.action == 'closed') != true
+          keep: false
+          # keep: (github.event_name == 'pull_request' && github.event.action == 'closed') != true
