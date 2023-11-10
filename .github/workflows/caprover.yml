@@ -29,7 +29,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const output = `#### Caprover deployment result 🖌\`${{ steps.caprover.outcome }}\` \\n Urls: \`${{ steps.caprover.outputs }}\``;
+            const output = `#### Caprover deployment result 🖌\`${{ steps.caprover.outcome }}\` \\n Urls: \`${{ steps.caprover.outputs.frontend }}\``;
 
             github.rest.issues.createComment({
               issue_number: context.issue.number,
