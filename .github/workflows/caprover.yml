@@ -1,4 +1,4 @@
-name: Container image
+name: Caprover
 
 on:
   push:
@@ -16,9 +16,24 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Deploy caprover
+        id: caprover
         uses: josedev-union/caprover-compose-action@support-env
         with:
           server: ${{ secrets.CAPTAIN_SERVER_URL }}
           password: ${{ secrets.CAPTAIN_SERVER_PASSWORD }}
-          keep: false
-          # keep: (github.event_name == 'pull_request' && github.event.action == 'closed') != true
+          keep: (github.event_name == 'pull_request' && github.event.action == 'closed') != true
+
+      - name: Output App urls as git comment
+        uses: actions/github-script@v6
+        if: github.event_name == 'pull_request'
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const output = `#### Caprover deployment url 🖌\`${{ steps.caprover.outcome }}\` `${{ steps.caprover.outputs.frontend }}``;
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: output
+            })
