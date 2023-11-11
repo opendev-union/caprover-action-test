@@ -17,14 +17,14 @@ jobs:
 
       - name: Deploy caprover
         id: caprover
-        uses: josedev-union/caprover-compose-action@main
+        uses: josedev-union/caprover-compose-action@v0.1.0
         continue-on-error: true
         with:
           server: ${{ secrets.CAPTAIN_SERVER_URL }}
           password: ${{ secrets.CAPTAIN_SERVER_PASSWORD }}
           keep: (github.event_name == 'pull_request' && github.event.action == 'closed') != true
 
-      - name: Output App urls as git comment
+      - name: Output Deployment result
         uses: actions/github-script@v6
         if: github.event_name == 'pull_request'
         with:
