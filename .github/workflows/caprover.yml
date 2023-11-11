@@ -1,4 +1,4 @@
-name: Container image
+name: Caprover
 
 on:
   push:
@@ -16,7 +16,25 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Deploy caprover
-        uses: josedev-union/caprover-compose-action@main
+        id: caprover
+        uses: josedev-union/caprover-compose-action@v0.1.0
+        continue-on-error: true
         with:
           server: ${{ secrets.CAPTAIN_SERVER_URL }}
           password: ${{ secrets.CAPTAIN_SERVER_PASSWORD }}
+          keep: (github.event_name == 'pull_request' && github.event.action == 'closed') != true
+
+      - name: Output Deployment result
+        uses: actions/github-script@v6
+        if: github.event_name == 'pull_request'
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const output = `#### Caprover deployment result 🖌 ${{ steps.caprover.outcome }}`;
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: output
+            })
