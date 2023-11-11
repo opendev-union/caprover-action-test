@@ -17,7 +17,8 @@ jobs:
 
       - name: Deploy caprover
         id: caprover
-        uses: josedev-union/caprover-compose-action@support-env
+        uses: josedev-union/caprover-compose-action@main
+        continue-on-error: true
         with:
           server: ${{ secrets.CAPTAIN_SERVER_URL }}
           password: ${{ secrets.CAPTAIN_SERVER_PASSWORD }}
@@ -29,7 +30,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const output = `#### Caprover deployment result 🖌\`${{ steps.caprover.outcome }}\` \\n Urls: \`${{ steps.caprover.outputs.frontend }}\``;
+            const output = `#### Caprover deployment result 🖌 ${{ steps.caprover.outcome }}`;
 
             github.rest.issues.createComment({
               issue_number: context.issue.number,
